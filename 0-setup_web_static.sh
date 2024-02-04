@@ -27,7 +27,7 @@ fi
 ln -s "$test_var" "$to_change_link"
 
 # Ownership permission is by user and group.
-chown -R ubuntu:ubuntu "$base_var"
+chown -R ubuntu:ubuntu /data/
 
 # Update Nginx configuration to serve content and restart Nginx
 nginx_config="/etc/nginx/sites-available/default"
