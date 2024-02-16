@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-# This is the app.py module for this flask project
-
-from flask import Flask
+"""
+This is the app.py module for this flask project
 # Import the flask class from its module
+"""
+from flask import Flask
 
 
 app = Flask(__name__)
-# Instantiate/create a flask app
 
 
 @app.route('/', strict_slashes=False)
@@ -16,5 +16,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    """ Disallow importing and running app.py as a module """
     app.run(host='0.0.0.0', port=5000)
