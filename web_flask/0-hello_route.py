@@ -10,10 +10,11 @@ app = Flask(__name__)
 
 
 # Listen/link to the home url
-app.route('/', strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def hello():
-    return 'Hello HBNB'
+    return 'Hello HBNB!'
+
 
 # Disallow importing and running app.py as a module
-if __name__ = '__main__':
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
