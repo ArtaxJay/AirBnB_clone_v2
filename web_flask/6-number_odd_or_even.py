@@ -1,0 +1,59 @@
+#!/usr/bin/python3
+"""
+This is the app.py module for this flask project
+# Import the flask class from its module
+"""
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
+
+
+@app.route('/', strict_slashes=False)
+def hello():
+    """ Listen/link to the home url """
+    return 'Hello HBNB!'
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """ Listen for the /hbnb url. """
+    return 'HBNB'
+
+
+@app.route('/c/<text>', strict_slashes=False)
+def dynamic_url(text):
+    """ Listen for /c/dynamic url. """
+    return "C {}".format(text.replace('_', ' '))
+
+
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def dynamic_url2(text='is cool'):
+    """ Listen for /python/dynamic url. """
+    return f'Python {text.replace("_", " ")}'
+
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def is_number_url(n):
+    """ Listen for a number url endpoints."""
+    return f'{n} is a number'
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def server_temp_num(n):
+    """ Serve 5-number.html if only n is an integer."""
+    return render_template('5-number.html', num=n)
+
+
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def serve_odd_even_num(n):
+    """
+    Serve 6-number*.html if only n is an integer and
+    display whether n is odd or even.
+    """
+    return render_template('6-number_odd_or_even.html', num=n)
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
